@@ -9,8 +9,7 @@ from .sprites.enemy import Enemy
 from .sprites.health import Health
 from .menu import Menu
 from .audio import Audio
-from .levels import Duel
-from .levels import FourShip
+from .level import Level
 
 
 class Game:
@@ -31,8 +30,9 @@ class Game:
     def reset(self):
         self.score = 0
         self.level_idx = 0
-        self.levels = [Duel(), FourShip(), Duel(enemy_type="enemy_ray")]
-        self.level = self.levels[0]
+        # self.levels = [SingleLevel()]
+        # self.level = self.levels[0]
+        self.level = Level()
         self.load_sprites()
         self.load_level()
 
@@ -73,12 +73,7 @@ class Game:
         self.event_counter += 1
 
     def change_level(self):
-        self.level_idx += 1
-        if self.level_idx >= self.n_level:
-            self.mode = "end"
-        else:
-            self.level = self.levels[self.level_idx]
-            self.load_level()
+        self.load_level()
 
     def update(self):
         self.player_group.update()

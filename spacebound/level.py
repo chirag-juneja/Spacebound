@@ -6,7 +6,7 @@ from spacebound.sprites.meteor import Meteor
 import spacebound.globals as gl
 
 
-class Duel:
+class Level:
     def __init__(self, enemy_type="enemy", n_enemy=3):
         self.enemy_group = pygame.sprite.Group()
         self.meteor_group = pygame.sprite.Group()
